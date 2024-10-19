@@ -1,0 +1,1377 @@
+Main Activity:
+
+XML :
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <Button
+        android:id="@+id/btnCalculator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Simple Calculator" />
+
+    <Button
+        android:id="@+id/btnVoting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Voting Eligibility" />
+
+</LinearLayout>
+
+JAVA :
+
+package com.example.a1_5;
+
+import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+public class MainActivity extends AppCompatActivity {
+    private Button btnCalculator, btnVoting;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        btnCalculator = findViewById(R.id.btnCalculator);
+        btnVoting = findViewById(R.id.btnVoting);
+
+        btnCalculator.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SimpleCalculatorActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnVoting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, VotingActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+}
+
+1st Exp :
+
+XML :
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/etadd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="313dp"
+        android:layout_marginBottom="403dp"
+        android:text="+" />
+
+    <Button
+        android:id="@+id/etdiv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="412dp"
+        android:text="/" />
+
+    <Button
+        android:id="@+id/etsub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="212dp"
+        android:layout_marginBottom="406dp"
+        android:text="-" />
+
+    <EditText
+        android:id="@+id/etresult"
+        android:layout_width="248dp"
+        android:layout_height="71dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="73dp"
+        android:layout_marginBottom="524dp"
+        android:ems="10"
+        android:hint="Answer"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/etsno"
+        android:layout_width="244dp"
+        android:layout_height="63dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="77dp"
+        android:layout_marginBottom="582dp"
+        android:ems="10"
+        android:hint="Second No."
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="336dp"
+        android:layout_marginBottom="546dp"
+        android:text="Result :"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="324dp"
+        android:layout_marginBottom="608dp"
+        android:text="Second no :"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="323dp"
+        android:layout_marginBottom="653dp"
+        android:text="First no :"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etfno"
+        android:layout_width="243dp"
+        android:layout_height="56dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="77dp"
+        android:layout_marginBottom="638dp"
+        android:ems="10"
+        android:hint="First No."
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/etmul"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="115dp"
+        android:layout_marginBottom="408dp"
+        android:text="*" />
+
+</RelativeLayout>
+
+JAVA :
+
+package com.example.a1_3;
+
+import androidx.appcompat.app.AppCompatActivity;
+import android.annotation.SuppressLint;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+public class CalculatorActivity extends AppCompatActivity {
+
+    EditText fno, sno, result;
+    Button add, sub, mul, div;
+
+    @SuppressLint("MissingInflatedId")
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_calculator);
+
+        fno = findViewById(R.id.etfno);
+        sno = findViewById(R.id.etsno);
+        result = findViewById(R.id.etresult);
+
+        add = findViewById(R.id.etadd);
+        sub = findViewById(R.id.etsub);
+        mul = findViewById(R.id.etmul);
+        div = findViewById(R.id.etdiv);
+
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int x = Integer.parseInt(fno.getText().toString());
+                int y = Integer.parseInt(sno.getText().toString());
+                int z = x + y;
+                result.setText("The sum is " + z);
+            }
+        });
+
+        sub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int x = Integer.parseInt(fno.getText().toString());
+                int y = Integer.parseInt(sno.getText().toString());
+                int z = x - y;
+                result.setText("The sub is " + z);
+            }
+        });
+
+        mul.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int x = Integer.parseInt(fno.getText().toString());
+                int y = Integer.parseInt(sno.getText().toString());
+                int z = x * y;
+                result.setText("The mul is " + z);
+            }
+        });
+
+        div.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int x = Integer.parseInt(fno.getText().toString());
+                int y = Integer.parseInt(sno.getText().toString());
+                if (y == 0) {
+                    result.setText("Not defined");
+                } else {
+                    int z = x / y;
+                    result.setText("The div is " + z);
+                }
+            }
+        });
+    }
+}
+
+
+2nd Exp :
+
+XML :
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/etht"
+        android:layout_width="wrap_content"
+        android:layout_height="57dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="43dp"
+        android:layout_marginBottom="498dp"
+        android:ems="10"
+        android:hint="height"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="273dp"
+        android:layout_marginBottom="513dp"
+        android:text="Height(in CM) :"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="49dp"
+        tools:layout_editor_absoluteY="231dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="57dp"
+        android:layout_marginBottom="647dp"
+        android:text="BMI Calculator"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.07" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="275dp"
+        android:layout_marginBottom="576dp"
+        android:text="Weight(in KG) :"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="49dp"
+        tools:layout_editor_absoluteY="231dp" />
+
+    <EditText
+        android:id="@+id/etwt"
+        android:layout_width="wrap_content"
+        android:layout_height="63dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="554dp"
+        android:ems="10"
+        android:hint="weight"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/btcal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="133dp"
+        android:layout_marginBottom="375dp"
+        android:text="Calculate"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="275dp"
+        android:layout_height="69dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="62dp"
+        android:layout_marginBottom="425dp"
+        android:text="Result"
+        android:textSize="24sp" />
+
+</RelativeLayout>
+
+JAVA :
+
+package com.example.a2_3;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
+public class BmiCalculatorActivity extends AppCompatActivity {
+    EditText etweight, etheight;
+    Button btcal;
+    TextView result;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_bmi_calculator);
+
+        // Initialize the views
+        etweight = findViewById(R.id.etwt);
+        etheight = findViewById(R.id.etht);
+        btcal = findViewById(R.id.btcal);
+        result = findViewById(R.id.result);
+
+        // Set the button click listener
+        btcal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String weightStr = etweight.getText().toString();
+                String heightStr = etheight.getText().toString();
+
+                if (!weightStr.isEmpty() && !heightStr.isEmpty()) {
+
+                    float weight = Float.parseFloat(weightStr);
+                    float height = Float.parseFloat(heightStr) / 100;
+
+                    float bmi = weight / (height * height);
+
+                    String bmiCategory;
+                    if (bmi < 18.5) {
+                        bmiCategory = "Underweight";
+                    } else if (bmi >= 18.5 && bmi < 24.9) {
+                        bmiCategory = "Normal weight";
+                    } else if (bmi >= 25 && bmi < 29.9) {
+                        bmiCategory = "Overweight";
+                    } else {
+                        bmiCategory = "Obesity";
+                    }
+
+                    result.setText(String.format("Your BMI is: %.2f\nCategory: %s", bmi, bmiCategory));
+                } else {
+                    result.setText("Please enter both weight and height");
+                }
+            }
+        });
+    }
+}
+
+
+3rd Exp :
+
+XML :
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="146dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="238dp"
+        android:layout_marginBottom="250dp"
+        android:text="Place of Birth :"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="358dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="31dp"
+        android:layout_marginBottom="655dp"
+        android:text="Registration Form"
+        android:textAlignment="center"
+        android:textSize="34sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.467"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.073" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="277dp"
+        android:layout_marginBottom="573dp"
+        android:text="Name :"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="144dp"
+        android:layout_height="51dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="257dp"
+        android:layout_marginBottom="487dp"
+        android:text="Father Name :"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/etna"
+        android:layout_width="230dp"
+        android:layout_height="62dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="552dp"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="text"
+        android:textStyle="italic" />
+
+    <EditText
+        android:id="@+id/etfna"
+        android:layout_width="232dp"
+        android:layout_height="61dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="43dp"
+        android:layout_marginBottom="489dp"
+        android:ems="10"
+        android:hint="Father's Name"
+        android:inputType="text"
+        android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="279dp"
+        android:layout_marginBottom="397dp"
+        android:text="Gender :"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <RadioGroup
+        android:id="@+id/GenderGroup"
+        android:layout_width="209dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="69dp"
+        android:layout_marginBottom="337dp">
+
+        <RadioButton
+            android:id="@+id/btma"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Male" />
+
+        <RadioButton
+            android:id="@+id/btfe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Female" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btsb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="150dp"
+        android:layout_marginBottom="184dp"
+        android:text="Submit" />
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="360dp"
+        android:layout_height="159dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="14dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold|italic" />
+
+    <AutoCompleteTextView
+        android:id="@+id/acplace"
+        android:layout_width="202dp"
+        android:layout_height="57dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="232dp"
+        android:hint="POB"
+        android:textStyle="italic" />
+
+</RelativeLayout>
+
+JAVA :
+
+package com.example.a2_3;
+
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
+
+public class RegistrationActivity extends AppCompatActivity {
+
+    EditText nameInput, fatherNameInput;
+    AutoCompleteTextView placeOfBirthInput;
+    RadioGroup genderGroup;
+    RadioButton selectedGenderButton;
+    Button submitButton;
+    TextView result;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_registration);
+
+        nameInput = findViewById(R.id.etna);
+        fatherNameInput = findViewById(R.id.etfna);
+        placeOfBirthInput = findViewById(R.id.acplace);
+        genderGroup = findViewById(R.id.GenderGroup);
+        submitButton = findViewById(R.id.btsb);
+        result = findViewById(R.id.result);
+
+        String[] places = new String[]{"Mumbai", "Delhi", "Bangalore", "Chennai", "Patna"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, places);
+        placeOfBirthInput.setAdapter(adapter);
+
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String name = nameInput.getText().toString().trim();
+                String fatherName = fatherNameInput.getText().toString().trim();
+                String placeOfBirth = placeOfBirthInput.getText().toString().trim();
+
+                int selectedGenderId = genderGroup.getCheckedRadioButtonId();
+                selectedGenderButton = findViewById(selectedGenderId);
+                String gender = selectedGenderButton != null ? selectedGenderButton.getText().toString() : "Not Selected";
+
+                result.setText("Name: " + name + "\n" + "Father Name: " + fatherName + "\n" + "Gender: " + gender + "\n" + "Place of Birth: " + placeOfBirth);
+            }
+        });
+    }
+}
+
+
+4th Exp :
+
+XML :
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="261dp"
+        android:layout_marginBottom="521dp"
+        android:text="Roll Number :"
+        android:textAlignment="textEnd"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="401dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="648dp"
+        android:text="Electives Selection"
+        android:textAlignment="center"
+        android:textSize="34sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="324dp"
+        android:layout_height="43dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="190dp"
+        android:layout_marginBottom="444dp"
+        android:text="Discipline Elective :"
+        android:textAlignment="textEnd"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="126dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="260dp"
+        android:layout_marginBottom="583dp"
+        android:text=" Name :"
+        android:textAlignment="textEnd"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/etname"
+        android:layout_width="230dp"
+        android:layout_height="55dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="564dp"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/etroll"
+        android:layout_width="225dp"
+        android:layout_height="57dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="31dp"
+        android:layout_marginBottom="501dp"
+        android:ems="10"
+        android:hint="Roll No."
+        android:inputType="text" />
+
+    <Spinner
+        android:id="@+id/spjava"
+        android:layout_width="206dp"
+        android:layout_height="61dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="125dp"
+        android:layout_marginBottom="369dp" />
+
+    <Button
+        android:id="@+id/btsb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="222dp"
+        android:layout_marginBottom="300dp"
+        android:text="Submit" />
+
+    <Button
+        android:id="@+id/btre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="112dp"
+        android:layout_marginBottom="301dp"
+        android:text="Reset" />
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="355dp"
+        android:layout_height="239dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="31dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>
+
+JAVA :
+
+package com.example.a1_4;
+
+import android.os.Bundle;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class ElectivesActivity extends AppCompatActivity {
+
+    EditText studentname, rollnumber;
+    Button submit, reset;
+    TextView result;
+    Spinner javafullstack;
+    String selectedCourse = "";
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_electives);
+
+        studentname = findViewById(R.id.etname);
+        rollnumber = findViewById(R.id.etroll);
+        javafullstack = findViewById(R.id.spjava);
+        submit = findViewById(R.id.btsb);
+        reset = findViewById(R.id.btre);
+        result = findViewById(R.id.result);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.courses));
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        javafullstack.setAdapter(adapter);
+
+        javafullstack.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                selectedCourse = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displayDetails(v);
+            }
+        });
+
+        reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resetDetails(v);
+            }
+        });
+    }
+
+    public void displayDetails(View v) {
+        result.setText("Name: " + studentname.getText().toString() +
+                "\nRoll Number: " + rollnumber.getText().toString() +
+                "\nSelected Course: " + selectedCourse);
+    }
+
+    public void resetDetails(View v) {
+        studentname.setText("");
+        rollnumber.setText("");
+        result.setText("");
+    }
+}
+
+
+String.XML :
+
+    <resources>
+        <string name="app_name">Electives Selection</string>
+        <string-array name="courses">
+            <item>Mobile Application Development</item>
+            <item>Java Full Stack</item>
+            <item>.Net Full Stack</item>
+        </string-array>
+    </resources>
+
+5th Exp :
+
+XML :
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="94dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="299dp"
+        android:layout_marginBottom="596dp"
+        android:text="Username"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="65dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="151dp"
+        android:layout_marginBottom="658dp"
+        android:text="Vote Eligibility"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="107dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="284dp"
+        android:layout_marginBottom="446dp"
+        android:text="Date of Birth"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="292dp"
+        android:layout_marginBottom="528dp"
+        android:text="Aadhar no."
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/etuser"
+        android:layout_width="229dp"
+        android:layout_height="56dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="574dp"
+        android:ems="10"
+        android:hint="username"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/etaadhar"
+        android:layout_width="224dp"
+        android:layout_height="59dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="506dp"
+        android:ems="10"
+        android:hint="aadhar"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/etdob"
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="66dp"
+        android:layout_marginBottom="423dp"
+        android:ems="10"
+        android:hint="DOB"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/btsub"
+        android:layout_width="121dp"
+        android:layout_height="63dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="170dp"
+        android:layout_marginBottom="270dp"
+        android:text="Submit" />
+</RelativeLayout>
+
+JAVA :
+
+package com.example.a1_5;
+
+import androidx.appcompat.app.AppCompatActivity;
+import android.app.DatePickerDialog;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import java.util.Calendar;
+
+public class VotingActivity extends AppCompatActivity {
+
+    private EditText etUsername, etAadharNumber, etDob;
+    private Button btnCheck;
+    private Calendar calendar;
+    private int selectedYear, selectedMonth, selectedDay;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_voting);
+
+        etUsername = findViewById(R.id.etuser);
+        etAadharNumber = findViewById(R.id.etaadhar);
+        etDob = findViewById(R.id.etdob);
+        btnCheck = findViewById(R.id.btsub);
+
+        calendar = Calendar.getInstance();
+
+        etDob.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(VotingActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        selectedYear = year;
+                        selectedMonth = month;
+                        selectedDay = dayOfMonth;
+                        etDob.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
+                    }
+                }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+                datePickerDialog.show();
+            }
+        });
+
+        btnCheck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String username = etUsername.getText().toString().trim();
+                String aadharNumber = etAadharNumber.getText().toString().trim();
+                String dob = etDob.getText().toString().trim();
+
+                if (!username.isEmpty() && !aadharNumber.isEmpty() && !dob.isEmpty()) {
+                    int userAge = calculateAge(selectedYear, selectedMonth, selectedDay);
+                    String eligibilityMessage;
+
+                    if (userAge >= 18) {
+                        eligibilityMessage = "Name: " + username + "\nAadhar Number: " + aadharNumber + "\nYou are eligible to vote";
+                    } else {
+                        eligibilityMessage = "Name: " + username + "\nAadhar Number: " + aadharNumber + "\nYou are not eligible to vote";
+                    }
+
+                    Intent intent = new Intent(VotingActivity.this, ResultActivity.class);
+                    intent.putExtra("resultMessage", eligibilityMessage);
+                    startActivity(intent);
+                }
+            }
+        });
+    }
+
+    private int calculateAge(int year, int month, int day) {
+        Calendar dob = Calendar.getInstance();
+        dob.set(year, month, day);
+        Calendar today = Calendar.getInstance();
+        int age = today.get(Calendar.YEAR) - dob.get(Calendar.YEAR);
+        if (today.get(Calendar.DAY_OF_YEAR) < dob.get(Calendar.DAY_OF_YEAR)) {
+            age--;
+        }
+        return age;
+    }
+}
+
+Result Section For Voting :
+
+XML :
+
+<?xml version="1.0" encoding="utf-8"?>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ResultActivity">
+
+        <TextView
+            android:id="@+id/result"
+            android:layout_width="305dp"
+            android:layout_height="343dp"
+            android:gravity="center_horizontal"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+JAVA :
+
+package com.example.a1_5;
+
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.TextView;
+
+public class ResultActivity extends AppCompatActivity {
+
+    private TextView tvResult;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_result);
+
+        tvResult = findViewById(R.id.result);
+
+        String resultMessage = getIntent().getStringExtra("resultMessage");
+        tvResult.setText(resultMessage);
+    }
+}
+
+
+6th Exp :
+
+XML :
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="117dp"
+        android:layout_marginBottom="628dp"
+        android:text="Cake Bakery"
+        android:textSize="34sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="253dp"
+        android:layout_marginBottom="523dp"
+        android:text="Cake Flavour:"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="242dp"
+        android:layout_marginBottom="279dp"
+        android:text="Time of Delivery"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="242dp"
+        android:layout_marginBottom="412dp"
+        android:text="Date of Delivery:"
+        android:textSize="20sp" />
+
+    <Spinner
+        android:id="@+id/spflav"
+        android:layout_width="216dp"
+        android:layout_height="53dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="27dp"
+        android:layout_marginBottom="501dp" />
+
+    <ImageView
+        android:id="@+id/ivcla"
+        android:layout_width="176dp"
+        android:layout_height="147dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="61dp"
+        android:layout_marginBottom="341dp"
+        app:srcCompat="@drawable/cal" />
+
+    <ImageView
+        android:id="@+id/ivclock"
+        android:layout_width="183dp"
+        android:layout_height="59dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="255dp"
+        app:srcCompat="@drawable/clock" />
+
+    <Button
+        android:id="@+id/btsub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="166dp"
+        android:layout_marginBottom="142dp"
+        android:text="Submit" />
+
+</RelativeLayout>
+
+JAVA :
+
+package com.example.a1_6;
+
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.TimePicker;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Calendar;
+
+public class CakeOrderActivity extends AppCompatActivity {
+
+    Spinner spinnerFlavour;
+    ImageView ivCalendar, ivClock;
+    Button btnSubmit;
+    Calendar calendar;
+    String selectedDate = "";
+    String selectedTime = "";
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_cake_order);
+
+        spinnerFlavour = findViewById(R.id.spflav);
+        ivCalendar = findViewById(R.id.ivcla);
+        ivClock = findViewById(R.id.ivclock);
+        btnSubmit = findViewById(R.id.btsub);
+
+        String[] flavours = {"Chocolate", "Vanilla", "Strawberry", "Butterscotch"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, flavours);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerFlavour.setAdapter(adapter);
+
+        calendar = Calendar.getInstance();
+
+        ivCalendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int year = calendar.get(Calendar.YEAR);
+                int month = calendar.get(Calendar.MONTH);
+                int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog datePickerDialog = new DatePickerDialog(CakeOrderActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                        selectedDate = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
+                        Toast.makeText(CakeOrderActivity.this, "Selected Date: " + selectedDate, Toast.LENGTH_SHORT).show();
+                    }
+                }, year, month, day);
+                datePickerDialog.show();
+            }
+        });
+
+        ivClock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int hour = calendar.get(Calendar.HOUR_OF_DAY);
+                int minute = calendar.get(Calendar.MINUTE);
+
+                TimePickerDialog timePickerDialog = new TimePickerDialog(CakeOrderActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        selectedTime = hourOfDay + ":" + String.format("%02d", minute);
+                        Toast.makeText(CakeOrderActivity.this, "Selected Time: " + selectedTime, Toast.LENGTH_SHORT).show();
+                    }
+                }, hour, minute, true);
+                timePickerDialog.show();
+            }
+        });
+
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (selectedDate.isEmpty() || selectedTime.isEmpty()) {
+                    Toast.makeText(CakeOrderActivity.this, "Please select both date and time.", Toast.LENGTH_SHORT).show();
+                } else {
+                    String flavour = spinnerFlavour.getSelectedItem().toString();
+                    Intent intent = new Intent(CakeOrderActivity.this, ResultActivity.class);
+                    intent.putExtra("flavour", flavour);
+                    intent.putExtra("date", selectedDate);
+                    intent.putExtra("time", selectedTime);
+                    startActivity(intent);
+                }
+            }
+        });
+    }
+}
+
+Result Section For Cake Order :
+
+XML :
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Result"
+        android:textSize="18sp" />
+
+</LinearLayout>
+
+
+JAVA :
+
+package com.example.a1_6;
+
+import android.os.Bundle;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class ResultActivity extends AppCompatActivity {
+
+    TextView resultText;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_result);
+
+        resultText = findViewById(R.id.result);
+
+        // Getting order details from intent
+        String flavour = getIntent().getStringExtra("flavour");
+        String date = getIntent().getStringExtra("date");
+        String time = getIntent().getStringExtra("time");
+
+        // Display the result
+        String result = "Cake Flavour: " + flavour + "\nDate of Delivery: " + date + "\nTime of Delivery: " + time;
+        resultText.setText(result);
+    }
+}
